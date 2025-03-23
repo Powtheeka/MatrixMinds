@@ -1,0 +1,60 @@
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Bookman Old Style', serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#title {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+h2, h3 {
+    color: #f9a825;
+    margin-top: 15px;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+input {
+    padding: 5px;
+    margin: 5px;
+    width: 50px;
+}
+
+.matrix-grid {
+    display: inline-grid;
+    grid-gap: 5px;
+    margin-top: 10px;
+}
+
+.matrix-grid input, .matrix-grid div {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #333;
+    color: #fff;
+}
+
+#result {
+    margin-top: 20px;
+}
