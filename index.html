@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MatriXpert</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.0/math.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- MatriXpert Title -->
+    <div id="title">MatriXpert</div>
+
+    <h2>Perform Various Matrix Operations Easily</h2>
+
+    <!-- Matrix A Input -->
+    <h3>Enter Matrix A</h3>
+    Rows: <input type="number" id="rowsA" value="2" min="1">
+    Columns: <input type="number" id="colsA" value="2" min="1">
+    <button onclick="generateMatrix('A')">Generate Matrix A</button>
+    <div id="matrixA"></div>
+
+    <!-- Matrix B Input -->
+    <h3>Enter Matrix B</h3>
+    Rows: <input type="number" id="rowsB" value="2" min="1">
+    Columns: <input type="number" id="colsB" value="2" min="1">
+    <button onclick="generateMatrix('B')">Generate Matrix B</button>
+    <div id="matrixB"></div>
+
+    <!-- Basic Matrix Operations -->
+    <h3>Matrix Operations</h3>
+    <button onclick="performOperation('add')">Add</button>
+    <button onclick="performOperation('subtract')">Subtract</button>
+    <button onclick="performOperation('multiply')">Multiply</button>
+
+    <!-- Advanced Matrix Operations -->
+    <h3>Advanced Operations</h3>
+    <button onclick="calculateDeterminant('A')">Determinant of A</button>
+    <button onclick="calculateDeterminant('B')">Determinant of B</button>
+    <button onclick="calculateInverse('A')">Inverse of A</button>
+    <button onclick="calculateInverse('B')">Inverse of B</button>
+    <button onclick="calculateEigenvalues('A')">Eigenvalues of A</button>
+    <button onclick="calculateEigenvalues('B')">Eigenvalues of B</button>
+    <button onclick="generateLaTeX('A', 'A')">Generate LaTeX Output for A</button>
+    <button onclick="generateLaTeX('B', 'B')">Generate LaTeX Output for B</button>
+
+    <!-- Result Section -->
+    <h3>Result:</h3>
+    <div id="result" class="matrix-grid"></div>
+
+    <!-- LaTeX Output -->
+    <h3>LaTeX Output:</h3>
+    <div id="latexResult"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
