@@ -1,6 +1,6 @@
-/* Background and Main Theme */
+/* ✨ Galactic Theme with Beautiful Design */
 body {
-    background-image: url('./blue_galaxy.png');
+    background-image: url('blue_galaxy.png'); /* Add the correct path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,27 +11,25 @@ body {
     padding: 0;
 }
 
-
-
-/* Main title style with updated name - MatrixMinds */
+/* ⚡ MatrixMinds - Main Title */
 #title {
     font-size: 60px;
-    color: white;
+    color: #f0f0f0;
     text-align: center;
     margin-top: 20px;
     font-weight: bold;
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9);
     content: "⚡ MatrixMinds ⚡";
 }
 
-/* Subtitle style */
+/* 🔥 Subtitles (Matrix Operations, etc.) */
 h2, h3 {
     color: #f9a825;
     margin-top: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
-/* Button style with icon */
+/* 🎮 Button Style with Icon */
 button {
     background-color: #4caf50;
     color: white;
@@ -43,29 +41,36 @@ button {
     font-size: 16px;
     display: inline-flex;
     align-items: center;
+    transition: background-color 0.3s ease-in-out;
 }
 
+/* ✨ Button Hover Effect */
 button:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }
 
-/* Input field style */
+/* 🎯 Input Field Style */
 input {
-    padding: 5px;
+    padding: 8px;
     margin: 5px;
     width: 60px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    text-align: center;
 }
 
-/* Matrix grid style with adjusted spacing */
+/* 📊 Matrix Grid with Enhanced Spacing */
 .matrix-grid {
     display: inline-grid;
     grid-gap: 8px;
     margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
 }
 
-/* Matrix box styling */
+/* 🎨 Matrix Box Styling */
 .matrix-grid input, .matrix-grid div {
     width: 60px;
     height: 40px;
@@ -74,9 +79,10 @@ input {
     background-color: #333;
     color: #fff;
     font-size: 16px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* Result section style */
+/* 📦 Result Section with Icon */
 #result {
     margin-top: 20px;
     padding: 15px;
@@ -84,9 +90,10 @@ input {
     border-radius: 8px;
     display: inline-block;
     text-align: left;
+    border: 1px solid #f9a825;
 }
 
-/* LaTeX output style with box and shadow */
+/* 📚 LaTeX Output with Styling */
 #latex-output {
     font-size: 18px;
     color: #f9a825;
@@ -98,8 +105,30 @@ input {
     border: 1px solid #f9a825;
 }
 
-/* Icon styles */
+/* 🌀 Icon Styles for Enhancement */
 .symbol {
     margin-right: 10px;
     font-size: 18px;
+}
+
+/* ⚙️ Adding Cool Effects to Matrix Operations */
+.matrix-operation {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    border: 1px solid #f9a825;
+}
+
+/* 🌟 Glow Effect on Focus */
+input:focus {
+    outline: none;
+    border-color: #f9a825;
+    box-shadow: 0 0 10px #f9a825;
+}
+
+/* 📌 Tooltip for Buttons */
+button::before {
+    content: "⚡";
+    margin-right: 8px;
 }
