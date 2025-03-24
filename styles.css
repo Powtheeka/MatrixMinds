@@ -11,7 +11,7 @@ body {
     padding: 0;
 }
 
-/* ⚡ MatrixMinds - Main Title */
+/* ⚡ MatrixXpert - Main Title */
 #title {
     font-size: 60px;
     color: #f0f0f0;
@@ -19,7 +19,6 @@ body {
     margin-top: 20px;
     font-weight: bold;
     text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
-    content: "⚡ MatrixMinds ⚡";
 }
 
 /* 🔥 Subtitles for Matrix Operations */
@@ -29,9 +28,21 @@ h2, h3 {
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
+/* 📦 Translucent Box for Options */
+.options-container {
+    background-color: rgba(0, 0, 0, 0.6); /* Translucent dark box */
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    display: inline-block;
+    box-shadow: 0 0 20px rgba(249, 168, 37, 0.5);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
 /* 🎮 Button Style with Icon */
 button {
-    background-color: #000; /* Changed from green to black */
+    background-color: #000; /* Black buttons */
     color: white;
     padding: 12px 25px;
     margin: 8px;
@@ -41,12 +52,12 @@ button {
     font-size: 16px;
     display: inline-flex;
     align-items: center;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, transform 0.3s;
 }
 
 /* ✨ Button Hover Effect */
 button:hover {
-    background-color: #333; /* Slightly lighter black on hover */
+    background-color: #333;
     transform: scale(1.05);
 }
 
@@ -70,6 +81,8 @@ input {
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* 🎨 Matrix Box Styling */
@@ -153,4 +166,21 @@ footer {
     content: "✔️";
     margin-right: 5px;
     color: #4caf50;
+}
+
+/* 🔥 Responsiveness for Mobile Devices */
+@media (max-width: 768px) {
+    .options-container {
+        width: 90%;
+    }
+
+    .matrix-grid input, .matrix-grid div {
+        width: 40px;
+        height: 30px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 }
