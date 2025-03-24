@@ -103,7 +103,14 @@ function diagonalizeMatrix(matrix) {
         const P = eigen.vectors;
         const P_inv = math.inv(P);
 
-        displayResult([[`D: ${D}`, `P: ${P}`, `P⁻¹: ${P_inv}`]]);
+        // Display D, P, and P⁻¹ in a formatted manner
+        document.getElementById('result').innerHTML = `
+            <strong>D:</strong><br>${formatMatrix(D._data || D)}
+            <br><br>
+            <strong>P:</strong><br>${formatMatrix(P._data || P)}
+            <br><br>
+            <strong>P⁻¹:</strong><br>${formatMatrix(P_inv._data || P_inv)}
+        `;
     } catch (error) {
         alert('Error in diagonalizing the matrix: ' + error.message);
     }
@@ -113,7 +120,8 @@ function diagonalizeMatrix(matrix) {
 function calculateRank(matrix) {
     const M = getMatrix(matrix);
     try {
-        const rank = math.rank(M);
+        // Calculate rank using LUP decomposition
+        const rank = math.lup(M).U.toArray().filter(row => row.some(value => Math.abs(value) > 1e-10)).length;
         displayResult([[`Rank: ${rank}`]]);
     } catch (error) {
         alert('Error calculating rank: ' + error.message);
@@ -127,12 +135,13 @@ function calculateIndexSignature(matrix) {
         const eigen = math.eigs(M).values;
         const positive = eigen.filter(v => v > 0).length;
         const negative = eigen.filter(v => v < 0).length;
-        const zero = eigen.filter(v => v === 0).length;
+        const zero = eigen.filter(v => Math.abs(v) < 1e-10).length;
 
         displayResult([
             [`Positive Eigenvalues: ${positive}`],
             [`Negative Eigenvalues: ${negative}`],
-            [`Zero Eigenvalues: ${zero}`]
+            [`Zero Eigenvalues: ${zero}`],
+            [`Signature: ${positive - negative}`]
         ]);
     } catch (error) {
         alert('Error calculating index and signature: ' + error.message);
@@ -151,6 +160,20 @@ function generateLaTeX(matrix, matrixName) {
 
     document.getElementById('latexResult').innerHTML = `LaTeX for Matrix ${matrixName}:<br> \\[${latex}\\]`;
     MathJax.typeset();
+}
+
+// 📚 Helper function to format matrices for display
+function formatMatrix(matrix) {
+    let html = '<table border="1" cellspacing="0" cellpadding="5">';
+    matrix.forEach(row => {
+        html += '<tr>';
+        row.forEach(value => {
+            html += `<td>${parseFloat(value).toFixed(3)}</td>`;
+        });
+        html += '</tr>';
+    });
+    html += '</table>';
+    return html;
 }
 
 // Display Results
