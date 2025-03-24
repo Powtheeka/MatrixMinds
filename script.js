@@ -13,6 +13,7 @@ function generateMatrix(matrix) {
     }
 }
 
+// Get matrix data
 function getMatrix(matrix) {
     const rows = document.getElementById(`rows${matrix}`).value;
     const cols = document.getElementById(`cols${matrix}`).value;
@@ -27,6 +28,7 @@ function getMatrix(matrix) {
     return matrixData;
 }
 
+// Perform matrix operations
 function performOperation(operation) {
     const A = getMatrix('A');
     const B = getMatrix('B');
@@ -43,6 +45,7 @@ function performOperation(operation) {
     }
 }
 
+// Calculate Determinant
 function calculateDeterminant(matrix) {
     const M = getMatrix(matrix);
     try {
@@ -53,12 +56,13 @@ function calculateDeterminant(matrix) {
     }
 }
 
+// Calculate Inverse
 function calculateInverse(matrix) {
     const M = getMatrix(matrix);
     try {
         const det = math.det(M);
-        if (Math.abs(det) < 1e-10) {  // Check for zero determinant with tolerance
-            alert('Matrix is singular or not invertible because the determinant is zero.');
+        if (det === 0) {
+            alert(`Matrix ${matrix} is singular and not invertible.`);
             return;
         }
         const inverse = math.inv(M);
@@ -68,16 +72,74 @@ function calculateInverse(matrix) {
     }
 }
 
+// Calculate Eigenvalues
 function calculateEigenvalues(matrix) {
     const M = getMatrix(matrix);
     try {
         const eigen = math.eigs(M);
-        displayResult([eigen.values.map(v => parseFloat(v).toFixed(3))]);
+        displayResult([eigen.values.map(v => v.toFixed(3))]);
     } catch (error) {
         alert('Error calculating eigenvalues: ' + error.message);
     }
 }
 
+// ➕ NEW: Calculate Eigenvectors
+function calculateEigenvectors(matrix) {
+    const M = getMatrix(matrix);
+    try {
+        const eigen = math.eigs(M);
+        displayResult(eigen.vectors);
+    } catch (error) {
+        alert('Error calculating eigenvectors: ' + error.message);
+    }
+}
+
+// ➕ NEW: Diagonalization
+function diagonalizeMatrix(matrix) {
+    const M = getMatrix(matrix);
+    try {
+        const eigen = math.eigs(M);
+        const D = math.diag(eigen.values);
+        const P = eigen.vectors;
+        const P_inv = math.inv(P);
+
+        displayResult([[`D: ${D}`, `P: ${P}`, `P⁻¹: ${P_inv}`]]);
+    } catch (error) {
+        alert('Error in diagonalizing the matrix: ' + error.message);
+    }
+}
+
+// ➕ NEW: Calculate Rank
+function calculateRank(matrix) {
+    const M = getMatrix(matrix);
+    try {
+        const rank = math.rank(M);
+        displayResult([[`Rank: ${rank}`]]);
+    } catch (error) {
+        alert('Error calculating rank: ' + error.message);
+    }
+}
+
+// ➕ NEW: Calculate Index and Signature
+function calculateIndexSignature(matrix) {
+    const M = getMatrix(matrix);
+    try {
+        const eigen = math.eigs(M).values;
+        const positive = eigen.filter(v => v > 0).length;
+        const negative = eigen.filter(v => v < 0).length;
+        const zero = eigen.filter(v => v === 0).length;
+
+        displayResult([
+            [`Positive Eigenvalues: ${positive}`],
+            [`Negative Eigenvalues: ${negative}`],
+            [`Zero Eigenvalues: ${zero}`]
+        ]);
+    } catch (error) {
+        alert('Error calculating index and signature: ' + error.message);
+    }
+}
+
+// Generate LaTeX Output
 function generateLaTeX(matrix, matrixName) {
     const M = getMatrix(matrix);
     let latex = `\\begin{bmatrix}`;
@@ -87,10 +149,11 @@ function generateLaTeX(matrix, matrixName) {
     }
     latex += `\\end{bmatrix}`;
 
-    document.getElementById('latexResult').innerHTML = `LaTeX for Matrix ${matrixName}:<br> \\(${latex}\\)`;
+    document.getElementById('latexResult').innerHTML = `LaTeX for Matrix ${matrixName}:<br> \\[${latex}\\]`;
     MathJax.typeset();
 }
 
+// Display Results
 function displayResult(result) {
     const resultContainer = document.getElementById('result');
     resultContainer.innerHTML = '';
