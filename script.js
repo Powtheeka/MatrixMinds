@@ -22,13 +22,11 @@ function getMatrix(matrix) {
     for (let i = 0; i < rows; i++) {
         matrixData[i] = [];
         for (let j = 0; j < cols; j++) {
-            // Parse the input and handle empty fields properly
             const value = document.getElementById(`${matrix}_${i}_${j}`).value;
             matrixData[i][j] = value === '' ? 0 : parseFloat(value);
         }
     }
 
-    // Debug: Log matrix for validation
     console.log(`Matrix Data for ${matrix}:`, matrixData);
     return matrixData;
 }
@@ -82,7 +80,7 @@ function calculateEigenvalues(matrix) {
     const M = getMatrix(matrix);
     try {
         const eigen = math.eigs(M);
-        const realValues = eigen.values.map(v => parseFloat(math.re(v).toFixed(3))); // Extract real part
+        const realValues = eigen.values.map(v => parseFloat(math.re(v).toFixed(3)));
         displayResult([realValues]);
     } catch (error) {
         alert('Error calculating eigenvalues: ' + error.message);
@@ -109,7 +107,6 @@ function diagonalizeMatrix(matrix) {
         const P = eigen.vectors;
         const P_inv = math.inv(P);
 
-        // Display D, P, and P⁻¹ in a formatted manner
         document.getElementById('result').innerHTML = `
             <strong>D:</strong><br>${formatMatrix(D._data || D)}
             <br><br>
@@ -126,8 +123,9 @@ function diagonalizeMatrix(matrix) {
 function calculateRank(matrix) {
     const M = getMatrix(matrix);
     try {
-        const qr = math.qr(M);  // Using QR decomposition to determine rank
-        const R = qr.R._data || qr.R; // Extract R matrix correctly
+        const qr = math.qr(M);
+        const R = qr.R._data || qr.R;
+        console.log("R Matrix:", R); // Debugging line
         const rank = R.filter(row => row.some(value => Math.abs(value) > 1e-10)).length;
         displayResult([[`Rank: ${rank}`]]);
     } catch (error) {
@@ -141,8 +139,7 @@ function calculateIndexSignature(matrix) {
     try {
         const eigen = math.eigs(M);
         const eigenvalues = eigen.values.map(v => parseFloat(v));
-
-        // Count positive, negative, and zero eigenvalues
+        console.log("Eigenvalues:", eigenvalues); // Debugging line
         let positive = 0, negative = 0, zero = 0;
         eigenvalues.forEach(v => {
             if (Math.abs(v) < 1e-10) {
@@ -154,7 +151,6 @@ function calculateIndexSignature(matrix) {
             }
         });
 
-        // Display Index, Signature, and Eigenvalue info
         displayResult([
             [`Positive Eigenvalues: ${positive}`],
             [`Negative Eigenvalues: ${negative}`],
