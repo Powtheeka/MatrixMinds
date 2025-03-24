@@ -1,6 +1,6 @@
 /* Background and Main Theme */
 body {
-    background-image: url('images/2518332.jpg'); /* Replace with the actual image name */
+    background-image: url('blue_galaxy.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,6 +10,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 
 /* Main title style with updated name - MatrixMinds */
 #title {
