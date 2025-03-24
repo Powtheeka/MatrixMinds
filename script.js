@@ -15,16 +15,21 @@ function generateMatrix(matrix) {
 
 // Get matrix data
 function getMatrix(matrix) {
-    const rows = document.getElementById(`rows${matrix}`).value;
-    const cols = document.getElementById(`cols${matrix}`).value;
+    const rows = parseInt(document.getElementById(`rows${matrix}`).value);
+    const cols = parseInt(document.getElementById(`cols${matrix}`).value);
     const matrixData = [];
 
     for (let i = 0; i < rows; i++) {
         matrixData[i] = [];
         for (let j = 0; j < cols; j++) {
-            matrixData[i][j] = parseFloat(document.getElementById(`${matrix}_${i}_${j}`).value) || 0;
+            // Parse the input and handle empty fields properly
+            const value = document.getElementById(`${matrix}_${i}_${j}`).value;
+            matrixData[i][j] = value === '' ? 0 : parseFloat(value);
         }
     }
+
+    // Debug: Log matrix for validation
+    console.log(`Matrix Data for ${matrix}:`, matrixData);
     return matrixData;
 }
 
@@ -77,7 +82,8 @@ function calculateEigenvalues(matrix) {
     const M = getMatrix(matrix);
     try {
         const eigen = math.eigs(M);
-        displayResult([eigen.values.map(v => v.toFixed(3))]);
+        const realValues = eigen.values.map(v => parseFloat(math.re(v).toFixed(3))); // Extract real part
+        displayResult([realValues]);
     } catch (error) {
         alert('Error calculating eigenvalues: ' + error.message);
     }
