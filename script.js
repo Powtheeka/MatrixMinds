@@ -120,10 +120,9 @@ function diagonalizeMatrix(matrix) {
 function calculateRank(matrix) {
     const M = getMatrix(matrix);
     try {
-        // Corrected to use math.lup and properly calculate rank
-        const lup = math.lup(M);
-        const U = lup.U._data || lup.U;  // Access U matrix correctly
-        const rank = U.filter(row => row.some(value => Math.abs(value) > 1e-10)).length;
+        const qr = math.qr(M);  // Using QR decomposition to determine rank
+        const R = qr.R._data || qr.R; // Extract R matrix correctly
+        const rank = R.filter(row => row.some(value => Math.abs(value) > 1e-10)).length;
         displayResult([[`Rank: ${rank}`]]);
     } catch (error) {
         alert('Error calculating rank: ' + error.message);
@@ -135,7 +134,7 @@ function calculateIndexSignature(matrix) {
     const M = getMatrix(matrix);
     try {
         const eigen = math.eigs(M);
-        const eigenvalues = eigen.values;
+        const eigenvalues = eigen.values.map(v => parseFloat(v));
 
         // Count positive, negative, and zero eigenvalues
         let positive = 0, negative = 0, zero = 0;
