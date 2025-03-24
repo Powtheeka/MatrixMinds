@@ -25,16 +25,22 @@
         <label for="colsA">Columns:</label>
         <input type="number" id="colsA" min="1" value="2">
         <button onclick="generateMatrix('A')">Generate Matrix A</button>
-        <div id="matrixA" class="matrix-grid"></div>
+        
+        <!-- Matrix Container for Alignment -->
+        <div class="matrix-container">
+            <div id="matrixA" class="matrix-grid"></div>
 
-        <!-- Matrix B Input Section -->
-        <h2>Matrix B</h2>
-        <label for="rowsB">Rows:</label>
-        <input type="number" id="rowsB" min="1" value="2">
-        <label for="colsB">Columns:</label>
-        <input type="number" id="colsB" min="1" value="2">
-        <button onclick="generateMatrix('B')">Generate Matrix B</button>
-        <div id="matrixB" class="matrix-grid"></div>
+            <!-- Matrix B Input Section -->
+            <div>
+                <h2>Matrix B</h2>
+                <label for="rowsB">Rows:</label>
+                <input type="number" id="rowsB" min="1" value="2">
+                <label for="colsB">Columns:</label>
+                <input type="number" id="colsB" min="1" value="2">
+                <button onclick="generateMatrix('B')">Generate Matrix B</button>
+                <div id="matrixB" class="matrix-grid"></div>
+            </div>
+        </div>
 
         <!-- Matrix Operations Section -->
         <h3>Matrix Operations</h3>
@@ -49,12 +55,13 @@
         <button onclick="calculateEigenvalues('B')">Eigenvalues of B</button>
         <button onclick="generateLaTeX('A', 'A')">Generate LaTeX for A</button>
         <button onclick="generateLaTeX('B', 'B')">Generate LaTeX for B</button>
-
     </div>
 
     <!-- 📦 Result Display Section -->
     <h3>Result</h3>
-    <div id="result" class="matrix-grid"></div>
+    <div id="result-container">
+        <div id="result" class="matrix-grid"></div>
+    </div>
 
     <!-- 📚 LaTeX Output Section -->
     <h3>LaTeX Output</h3>
