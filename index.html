@@ -12,46 +12,55 @@
     <!-- MatriXpert Title -->
     <div id="title">MatrixMinds</div>
 
-    <h2>Perform Various Matrix Operations Easily</h2>
+    <!-- 🎨 Translucent Box for Options -->
+    <div class="options-container">
 
-    <!-- Matrix A Input -->
-    <h3>Enter Matrix A</h3>
-    Rows: <input type="number" id="rowsA" value="2" min="1">
-    Columns: <input type="number" id="colsA" value="2" min="1">
-    <button onclick="generateMatrix('A')">Generate Matrix A</button>
-    <div id="matrixA"></div>
+        <!-- Matrix A Input Section -->
+        <h2>Matrix A</h2>
+        <label for="rowsA">Rows:</label>
+        <input type="number" id="rowsA" min="1" value="2">
+        <label for="colsA">Columns:</label>
+        <input type="number" id="colsA" min="1" value="2">
+        <button onclick="generateMatrix('A')">Generate Matrix A</button>
+        <div id="matrixA" class="matrix-grid"></div>
 
-    <!-- Matrix B Input -->
-    <h3>Enter Matrix B</h3>
-    Rows: <input type="number" id="rowsB" value="2" min="1">
-    Columns: <input type="number" id="colsB" value="2" min="1">
-    <button onclick="generateMatrix('B')">Generate Matrix B</button>
-    <div id="matrixB"></div>
+        <!-- Matrix B Input Section -->
+        <h2>Matrix B</h2>
+        <label for="rowsB">Rows:</label>
+        <input type="number" id="rowsB" min="1" value="2">
+        <label for="colsB">Columns:</label>
+        <input type="number" id="colsB" min="1" value="2">
+        <button onclick="generateMatrix('B')">Generate Matrix B</button>
+        <div id="matrixB" class="matrix-grid"></div>
 
-    <!-- Basic Matrix Operations -->
-    <h3>Matrix Operations</h3>
-    <button onclick="performOperation('add')">Add</button>
-    <button onclick="performOperation('subtract')">Subtract</button>
-    <button onclick="performOperation('multiply')">Multiply</button>
+        <!-- Matrix Operations Section -->
+        <h3>Matrix Operations</h3>
+        <button onclick="performOperation('add')">Add</button>
+        <button onclick="performOperation('subtract')">Subtract</button>
+        <button onclick="performOperation('multiply')">Multiply</button>
+        <button onclick="calculateDeterminant('A')">Determinant of A</button>
+        <button onclick="calculateDeterminant('B')">Determinant of B</button>
+        <button onclick="calculateInverse('A')">Inverse of A</button>
+        <button onclick="calculateInverse('B')">Inverse of B</button>
+        <button onclick="calculateEigenvalues('A')">Eigenvalues of A</button>
+        <button onclick="calculateEigenvalues('B')">Eigenvalues of B</button>
+        <button onclick="generateLaTeX('A', 'A')">Generate LaTeX for A</button>
+        <button onclick="generateLaTeX('B', 'B')">Generate LaTeX for B</button>
 
-    <!-- Advanced Matrix Operations -->
-    <h3>Advanced Operations</h3>
-    <button onclick="calculateDeterminant('A')">Determinant of A</button>
-    <button onclick="calculateDeterminant('B')">Determinant of B</button>
-    <button onclick="calculateInverse('A')">Inverse of A</button>
-    <button onclick="calculateInverse('B')">Inverse of B</button>
-    <button onclick="calculateEigenvalues('A')">Eigenvalues of A</button>
-    <button onclick="calculateEigenvalues('B')">Eigenvalues of B</button>
-    <button onclick="generateLaTeX('A', 'A')">Generate LaTeX Output for A</button>
-    <button onclick="generateLaTeX('B', 'B')">Generate LaTeX Output for B</button>
+    </div>
 
-    <!-- Result Section -->
-    <h3>Result:</h3>
+    <!-- 📦 Result Display Section -->
+    <h3>Result</h3>
     <div id="result" class="matrix-grid"></div>
 
-    <!-- LaTeX Output -->
-    <h3>LaTeX Output:</h3>
+    <!-- 📚 LaTeX Output Section -->
+    <h3>LaTeX Output</h3>
     <div id="latexResult"></div>
+
+    <!-- Footer Section -->
+    <footer>
+        © 2025 MatrixMinds. All Rights Reserved.
+    </footer>
 
     <script src="script.js"></script>
 </body>
