@@ -1,3 +1,4 @@
+// Generate matrix with specified rows and columns
 function generateMatrix(matrix) {
     const rows = document.getElementById(`rows${matrix}`).value;
     const cols = document.getElementById(`cols${matrix}`).value;
@@ -13,21 +14,18 @@ function generateMatrix(matrix) {
     }
 }
 
-// Get matrix data
+// Get matrix data from input
 function getMatrix(matrix) {
-    const rows = parseInt(document.getElementById(`rows${matrix}`).value);
-    const cols = parseInt(document.getElementById(`cols${matrix}`).value);
+    const rows = document.getElementById(`rows${matrix}`).value;
+    const cols = document.getElementById(`cols${matrix}`).value;
     const matrixData = [];
 
     for (let i = 0; i < rows; i++) {
         matrixData[i] = [];
         for (let j = 0; j < cols; j++) {
-            const value = document.getElementById(`${matrix}_${i}_${j}`).value;
-            matrixData[i][j] = value === '' ? 0 : parseFloat(value);
+            matrixData[i][j] = parseFloat(document.getElementById(`${matrix}_${i}_${j}`).value) || 0;
         }
     }
-
-    console.log(`Matrix Data for ${matrix}:`, matrixData);
     return matrixData;
 }
 
@@ -80,14 +78,13 @@ function calculateEigenvalues(matrix) {
     const M = getMatrix(matrix);
     try {
         const eigen = math.eigs(M);
-        const realValues = eigen.values.map(v => parseFloat(math.re(v).toFixed(3)));
-        displayResult([realValues]);
+        displayResult([eigen.values.map(v => v.toFixed(3))]);
     } catch (error) {
         alert('Error calculating eigenvalues: ' + error.message);
     }
 }
 
-// ➕ NEW: Calculate Eigenvectors
+// Calculate Eigenvectors
 function calculateEigenvectors(matrix) {
     const M = getMatrix(matrix);
     try {
@@ -98,7 +95,7 @@ function calculateEigenvectors(matrix) {
     }
 }
 
-// ➕ NEW: Diagonalization
+// Diagonalize Matrix
 function diagonalizeMatrix(matrix) {
     const M = getMatrix(matrix);
     try {
@@ -107,6 +104,7 @@ function diagonalizeMatrix(matrix) {
         const P = eigen.vectors;
         const P_inv = math.inv(P);
 
+        // Display D, P, and P⁻¹ in a formatted manner
         document.getElementById('result').innerHTML = `
             <strong>D:</strong><br>${formatMatrix(D._data || D)}
             <br><br>
@@ -116,49 +114,6 @@ function diagonalizeMatrix(matrix) {
         `;
     } catch (error) {
         alert('Error in diagonalizing the matrix: ' + error.message);
-    }
-}
-
-// ➕ NEW: Calculate Rank
-function calculateRank(matrix) {
-    const M = getMatrix(matrix);
-    try {
-        const qr = math.qr(M);
-        const R = qr.R._data || qr.R;
-        console.log("R Matrix:", R); // Debugging line
-        const rank = R.filter(row => row.some(value => Math.abs(value) > 1e-10)).length;
-        displayResult([[`Rank: ${rank}`]]);
-    } catch (error) {
-        alert('Error calculating rank: ' + error.message);
-    }
-}
-
-// ➕ NEW: Calculate Index and Signature
-function calculateIndexSignature(matrix) {
-    const M = getMatrix(matrix);
-    try {
-        const eigen = math.eigs(M);
-        const eigenvalues = eigen.values.map(v => parseFloat(v));
-        console.log("Eigenvalues:", eigenvalues); // Debugging line
-        let positive = 0, negative = 0, zero = 0;
-        eigenvalues.forEach(v => {
-            if (Math.abs(v) < 1e-10) {
-                zero++;
-            } else if (v > 0) {
-                positive++;
-            } else {
-                negative++;
-            }
-        });
-
-        displayResult([
-            [`Positive Eigenvalues: ${positive}`],
-            [`Negative Eigenvalues: ${negative}`],
-            [`Zero Eigenvalues: ${zero}`],
-            [`Signature: ${positive - negative}`]
-        ]);
-    } catch (error) {
-        alert('Error calculating index and signature: ' + error.message);
     }
 }
 
