@@ -1,9 +1,6 @@
-/* ✨ Galactic Theme with Beautiful Design */
+/* 🎨 Dark Mode Theme with Enhanced Style */
 body {
-    background-image: url('blue_galaxy.png'); /* Add the correct path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #121212; /* Dark background for a futuristic look */
     color: #fff;
     font-family: 'Bookman Old Style', serif;
     text-align: center;
@@ -18,11 +15,11 @@ body {
     text-align: center;
     margin-top: 20px;
     font-weight: bold;
-    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9);
+    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
     content: "⚡ MatrixMinds ⚡";
 }
 
-/* 🔥 Subtitles (Matrix Operations, etc.) */
+/* 🔥 Subtitles for Matrix Operations */
 h2, h3 {
     color: #f9a825;
     margin-top: 15px;
@@ -58,6 +55,8 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: center;
+    background-color: #333;
+    color: #fff;
 }
 
 /* 📊 Matrix Grid with Enhanced Spacing */
@@ -75,14 +74,14 @@ input {
     width: 60px;
     height: 40px;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 1px solid #f9a825;
     background-color: #333;
     color: #fff;
     font-size: 16px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* 📦 Result Section with Icon */
+/* 📦 Result Section with Border and Glow */
 #result {
     margin-top: 20px;
     padding: 15px;
@@ -90,10 +89,11 @@ input {
     border-radius: 8px;
     display: inline-block;
     text-align: left;
-    border: 1px solid #f9a825;
+    border: 2px solid #f9a825;
+    box-shadow: 0 0 15px rgba(249, 168, 37, 0.7);
 }
 
-/* 📚 LaTeX Output with Styling */
+/* 📚 LaTeX Output Box */
 #latex-output {
     font-size: 18px;
     color: #f9a825;
@@ -105,13 +105,13 @@ input {
     border: 1px solid #f9a825;
 }
 
-/* 🌀 Icon Styles for Enhancement */
+/* 🌀 Symbol & Icon Styles */
 .symbol {
     margin-right: 10px;
     font-size: 18px;
 }
 
-/* ⚙️ Adding Cool Effects to Matrix Operations */
+/* ⚙️ Matrix Operations Section */
 .matrix-operation {
     margin-top: 15px;
     padding: 12px;
@@ -120,7 +120,7 @@ input {
     border: 1px solid #f9a825;
 }
 
-/* 🌟 Glow Effect on Focus */
+/* 🌟 Glow Effect on Input Focus */
 input:focus {
     outline: none;
     border-color: #f9a825;
@@ -131,4 +131,23 @@ input:focus {
 button::before {
     content: "⚡";
     margin-right: 8px;
+}
+
+/* 🖥️ Animation for Smooth Transition */
+button, input, .matrix-grid div, #result {
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🎇 Footer or Additional Info Section */
+footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+/* 🎯 Icon and Symbol Effects */
+.symbol::before {
+    content: "✔️";
+    margin-right: 5px;
+    color: #4caf50;
 }
