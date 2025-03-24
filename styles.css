@@ -1,5 +1,9 @@
+/* Background and Main Theme */
 body {
-    background-color: #121212;
+    background-image: url('your-image-name.jpg'); /* Replace with the actual image name */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
     font-family: 'Bookman Old Style', serif;
     text-align: center;
@@ -7,54 +11,93 @@ body {
     padding: 0;
 }
 
+/* Main title style with updated name - MatrixMinds */
 #title {
-    font-size: 36px;
+    font-size: 60px;
     color: white;
     text-align: center;
     margin-top: 20px;
     font-weight: bold;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    content: "⚡ MatrixMinds ⚡";
 }
 
+/* Subtitle style */
 h2, h3 {
     color: #f9a825;
     margin-top: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
+/* Button style with icon */
 button {
     background-color: #4caf50;
     color: white;
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 12px 25px;
+    margin: 8px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
 }
 
 button:hover {
     background-color: #45a049;
 }
 
+/* Input field style */
 input {
     padding: 5px;
     margin: 5px;
-    width: 50px;
+    width: 60px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
+/* Matrix grid style with adjusted spacing */
 .matrix-grid {
     display: inline-grid;
-    grid-gap: 5px;
+    grid-gap: 8px;
     margin-top: 10px;
 }
 
+/* Matrix box styling */
 .matrix-grid input, .matrix-grid div {
-    width: 50px;
-    height: 30px;
+    width: 60px;
+    height: 40px;
     text-align: center;
     border: 1px solid #ccc;
     background-color: #333;
     color: #fff;
+    font-size: 16px;
 }
 
+/* Result section style */
 #result {
     margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+    text-align: left;
+}
+
+/* LaTeX output style with box and shadow */
+#latex-output {
+    font-size: 18px;
+    color: #f9a825;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    display: inline-block;
+    border: 1px solid #f9a825;
+}
+
+/* Icon styles */
+.symbol {
+    margin-right: 10px;
+    font-size: 18px;
 }
