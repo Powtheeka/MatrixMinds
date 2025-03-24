@@ -56,6 +56,11 @@ function calculateDeterminant(matrix) {
 function calculateInverse(matrix) {
     const M = getMatrix(matrix);
     try {
+        const det = math.det(M);
+        if (Math.abs(det) < 1e-10) {  // Check for zero determinant with tolerance
+            alert('Matrix is singular or not invertible because the determinant is zero.');
+            return;
+        }
         const inverse = math.inv(M);
         displayResult(inverse);
     } catch (error) {
@@ -67,7 +72,7 @@ function calculateEigenvalues(matrix) {
     const M = getMatrix(matrix);
     try {
         const eigen = math.eigs(M);
-        displayResult([eigen.values.map(v => v.toFixed(3))]);
+        displayResult([eigen.values.map(v => parseFloat(v).toFixed(3))]);
     } catch (error) {
         alert('Error calculating eigenvalues: ' + error.message);
     }
@@ -82,7 +87,7 @@ function generateLaTeX(matrix, matrixName) {
     }
     latex += `\\end{bmatrix}`;
 
-    document.getElementById('latexResult').innerHTML = `LaTeX for Matrix ${matrixName}:<br> \${latex} \`;
+    document.getElementById('latexResult').innerHTML = `LaTeX for Matrix ${matrixName}:<br> \\(${latex}\\)`;
     MathJax.typeset();
 }
 
