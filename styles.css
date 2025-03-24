@@ -1,6 +1,9 @@
 /* 🎨 Dark Mode Theme with Enhanced Style */
 body {
-    background-color: #121212; /* Dark background for a futuristic look */
+    background-image: url('blue_galaxy.png'); /* Add the correct path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
     font-family: 'Bookman Old Style', serif;
     text-align: center;
