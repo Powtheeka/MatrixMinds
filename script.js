@@ -120,8 +120,10 @@ function diagonalizeMatrix(matrix) {
 function calculateRank(matrix) {
     const M = getMatrix(matrix);
     try {
-        // Calculate rank using LUP decomposition
-        const rank = math.lup(M).U.toArray().filter(row => row.some(value => Math.abs(value) > 1e-10)).length;
+        // Corrected to use math.lup and properly calculate rank
+        const lup = math.lup(M);
+        const U = lup.U._data || lup.U;  // Access U matrix correctly
+        const rank = U.filter(row => row.some(value => Math.abs(value) > 1e-10)).length;
         displayResult([[`Rank: ${rank}`]]);
     } catch (error) {
         alert('Error calculating rank: ' + error.message);
@@ -132,11 +134,22 @@ function calculateRank(matrix) {
 function calculateIndexSignature(matrix) {
     const M = getMatrix(matrix);
     try {
-        const eigen = math.eigs(M).values;
-        const positive = eigen.filter(v => v > 0).length;
-        const negative = eigen.filter(v => v < 0).length;
-        const zero = eigen.filter(v => Math.abs(v) < 1e-10).length;
+        const eigen = math.eigs(M);
+        const eigenvalues = eigen.values;
 
+        // Count positive, negative, and zero eigenvalues
+        let positive = 0, negative = 0, zero = 0;
+        eigenvalues.forEach(v => {
+            if (Math.abs(v) < 1e-10) {
+                zero++;
+            } else if (v > 0) {
+                positive++;
+            } else {
+                negative++;
+            }
+        });
+
+        // Display Index, Signature, and Eigenvalue info
         displayResult([
             [`Positive Eigenvalues: ${positive}`],
             [`Negative Eigenvalues: ${negative}`],
